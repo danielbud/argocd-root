@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root
+  namespace: argocd-system
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:danielbud/argocd-root.git
+    targetRevision: HEAD
+    path: base
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd-system
