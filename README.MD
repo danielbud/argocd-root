@@ -17,4 +17,9 @@ helm upgrade --install \
     --wait
 
 
+kubectl apply -f rootapplication.yaml
+
+
+kubens argocd-system
+kubectl get pods
 
