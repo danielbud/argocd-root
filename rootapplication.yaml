@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/danielbud/argocd-root.git
     targetRevision: HEAD
-    path: base
+    path: atlas-staging-infra
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd-system
