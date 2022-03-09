@@ -1,22 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: sample-app
+  name: root-infra
   namespace: argocd-system
 spec:
   project: default
   source:
-    chart: sample-app
     repoURL: https://github.com/danielbud/argocd-root.git
-    targetRevision: 0.1.0
-    helm:
-      releaseName: sample-app
+    targetRevision: HEAD
+    path: atlas-staging-infra
   destination:
     server: https://kubernetes.default.svc
-    namespace: application
+    namespace: argocd-system
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true

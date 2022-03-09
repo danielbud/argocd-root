@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-app
+  namespace: argocd-system
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/danielbud/argocd-root.git
+    targetRevision: HEAD
+    path: atlas-staging-app
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
